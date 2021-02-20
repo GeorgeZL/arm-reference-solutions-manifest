@@ -5,7 +5,7 @@
   <remote fetch="https://git.savannah.gnu.org" name="gnugit"/>
   <remote fetch="https://git.kernel.org" name="kernel"/>
 
-  <project remote="arm" name="arm-reference-solutions/scp-firmware" path="scp" revision="refs/tags/RD-INFRA-2021.02.24"/>
+  <project remote="arm" name="arm-reference-solutions/scp-firmware" path="scp" revision="refs/tags/RD-INFRA-2021.02.24-RDE1EDGE"/>
   <project remote="arm" name="arm-reference-solutions/trusted-firmware-a" path="arm-tf" revision="refs/tags/RD-INFRA-2021.02.24"/>
   <project remote="arm" name="arm-reference-solutions/edk2" path="uefi/edk2" revision="refs/tags/RD-INFRA-2021.02.24"/>
   <project remote="arm" name="arm-reference-solutions/edk2-platforms" path="uefi/edk2/edk2-platforms" revision="refs/tags/RD-INFRA-2021.02.24"/>
