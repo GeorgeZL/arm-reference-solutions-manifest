@@ -6,7 +6,7 @@
   <remote name="linaro" fetch="http://git.linaro.org"/>
   <remote fetch="https://gitlab.com/" name="gitlab" />
 
-  <project name="landing-teams/working/arm/yocto-platform-config" groups="android,bsp" path="bsp/conf" remote="linaro" revision="refs/tags/TC0-2021.02.09">
+  <project name="landing-teams/working/arm/yocto-platform-config" groups="android,bsp" path="bsp/conf" remote="linaro" revision="0f1e698b3bdf742fc18b851db5095c644f5a7d2d">
     <linkfile dest="bsp/setup-environment" src="setup-environment"/>
   </project>
   <project name="meta-yocto" path="bsp/layers/meta-yocto" groups="android,bsp" remote="yocto" revision="269f81c2b2ac64219c65953bc56bd41317a8db0f"/>
@@ -14,6 +14,6 @@
   <project name="meta-openembedded" path="bsp/layers/meta-openembedded" groups="android,bsp" remote="openembedded" revision="b9dcf17700014dec679307dc1247882dccd439ca"/>
   <project name="openembedded/community/meta-kernel" path="bsp/layers/meta-kernel" groups="android,bsp" remote="gitlab" revision="d1fb5bccbaece35e3481d73b3858c0d4e3695b9b"/>
   <project name="openembedded-core" path="bsp/layers/openembedded-core" groups="android,bsp" remote="openembedded" revision="32e754ec89e8f33e5b6e83a8ac359ffc3690282f"/>
-  <project name="meta-arm" path="bsp/layers/meta-arm" remote="yocto" groups="android,bsp" revision="a9644d39c53162465ecbf5e4ea936a65e443f96b"/>
-  <project name="landing-teams/working/arm/model-scripts" path="bsp/run-scripts" remote="linaro"  groups="android,bsp" revision="refs/tags/TC0-2021.02.09"/>
+  <project name="landing-teams/working/arm/yocto-recipes" path="bsp/layers/meta-arm" remote="linaro" groups="android,bsp" revision="f90f0286464eb30b42793eeaa33b5ebdd2621a68"/>
+  <project name="landing-teams/working/arm/model-scripts" path="bsp/run-scripts" remote="linaro"  groups="android,bsp" revision="77028b87adf7d9032e221169cb779a2d024ee8f7"/>
 </manifest>

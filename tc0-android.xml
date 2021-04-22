@@ -5,11 +5,11 @@
   <remote  name="aosp"
            fetch="https://android.googlesource.com/"
            review="https://android-review.googlesource.com/" />
-  <default revision="refs/tags/android-10.0.0_r33"
+  <default revision="refs/tags/android-11.0.0_r27"
            remote="aosp"
            sync-j="4" />
-   <project name="landing-teams/working/arm/device-profile" path="android/device/arm" remote="linaro" revision="refs/tags/TC0-2021.02.09" groups="android" />
-   <project name="landing-teams/working/arm/build-scripts" path="android/build-scripts" remote="linaro" revision="refs/tags/TC0-2021.02.09" groups="android" />
+  <project name="landing-teams/working/arm/device-profile" path="android/device/arm" remote="linaro" revision="f03caf56f20332f5b5608a5b4ba731649d5af343" groups="android" />
+   <project name="landing-teams/working/arm/build-scripts" path="android/build-scripts" remote="linaro" revision="65d21e5267d474792901b433b28322063ffb36c7" groups="android" />
 
   <project path="android/build/make" name="platform/build" groups="android,pdk" >
     <copyfile src="core/root.mk" dest="android/Makefile" />
@@ -21,7 +21,6 @@
     <linkfile src="tools" dest="android/build/tools" />
   </project>
   <project path="android/build/blueprint" name="platform/build/blueprint" groups="android,pdk,tradefed" />
-  <project path="android/build/kati" name="platform/build/kati" groups="android,pdk,tradefed" />
   <project path="android/build/soong" name="platform/build/soong" groups="android,pdk,tradefed" >
     <linkfile src="root.bp" dest="android/Android.bp" />
     <linkfile src="bootstrap.bash" dest="android/bootstrap.bash" />
@@ -29,6 +28,7 @@
   <project path="android/art" name="platform/art" groups="android,pdk" />
   <project path="android/bionic" name="platform/bionic" groups="android,pdk" />
   <project path="android/bootable/recovery" name="platform/bootable/recovery" groups="android,pdk" />
+  <project path="android/compatibility/cdd" name="platform/compatibility/cdd" groups="android,pdk" />
   <project path="android/cts" name="platform/cts" groups="android,cts,pdk-cw-fs,pdk-fs" />
   <project path="android/dalvik" name="platform/dalvik" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/developers/build" name="platform/developers/build" groups="android,developers,pdk" />
@@ -36,10 +36,11 @@
   <project path="android/developers/samples/android" name="platform/developers/samples/android" groups="android,developers" />
   <project path="android/development" name="platform/development" groups="android,developers,pdk-cw-fs,pdk-fs" />
   <project path="android/device/amlogic/yukawa" name="device/amlogic/yukawa" groups="android,device,yukawa,pdk" />
-  <project path="android/device/amlogic/yukawa-kernel" name="device/amlogic/yukawa-kernel" groups="android,device,yukawa,pdk" clone-depth="1" />
+  <project path="android/device/amlogic/yukawa-kernel" name="device/amlogic/yukawa-kernel" groups="android,device,yukawa,pdk" clone-depth="2" />
   <project path="android/device/common" name="device/common" groups="android,pdk-cw-fs,pdk" />
   <project path="android/device/generic/arm64" name="device/generic/arm64" groups="android,pdk" />
   <project path="android/device/generic/armv7-a-neon" name="device/generic/armv7-a-neon" groups="android,pdk" />
+  <project path="android/device/generic/art" name="device/generic/art" groups="android,pdk" />
   <project path="android/device/generic/car" name="device/generic/car" groups="android,pdk" />
   <project path="android/device/generic/common" name="device/generic/common" groups="android,pdk" />
   <project path="android/device/generic/goldfish" name="device/generic/goldfish" groups="android,pdk" />
@@ -58,42 +59,51 @@
   <project path="android/device/google/bonito" name="device/google/bonito" groups="android,device,bonito" />
   <project path="android/device/google/bonito-kernel" name="device/google/bonito-kernel" groups="android,device,bonito" clone-depth="1" />
   <project path="android/device/google/bonito-sepolicy" name="device/google/bonito-sepolicy" groups="android,device,bonito" />
-  <project path="android/device/google/contexthub" name="device/google/contexthub" groups="android,device,marlin,pdk" />
-  <project path="android/device/google/coral" name="device/google/coral" groups="android,device,coral" />
-  <project path="android/device/google/coral-kernel" name="device/google/coral-kernel" groups="android,device,coral" clone-depth="1" />
-  <project path="android/device/google/coral-sepolicy" name="device/google/coral-sepolicy" groups="android,device,coral" />
+  <project path="android/device/google/bramble" name="device/google/bramble" groups="android,device,bramble" />
+  <project path="android/device/google/bramble-kernel" name="device/google/bramble-kernel" groups="android,device,bramble" clone-depth="1" />
+  <project path="android/device/google/bramble-sepolicy" name="device/google/bramble-sepolicy" groups="android,device,bramble" />
+  <project path="android/device/google/contexthub" name="device/google/contexthub" groups="android,device,pdk" />
+  <project path="android/device/google/coral" name="device/google/coral" groups="android,device,coral,generic_fs" />
+  <project path="android/device/google/coral-kernel" name="device/google/coral-kernel" groups="android,device,coral,generic_fs" clone-depth="1" />
+  <project path="android/device/google/coral-sepolicy" name="device/google/coral-sepolicy" groups="android,device,coral,generic_fs" />
+  <project path="android/device/google/redbull" name="device/google/redbull" groups="android,device,redbull" />
+  <project path="android/device/google/redbull-sepolicy" name="device/google/redbull-sepolicy" groups="android,device,redbull" />
+  <project path="android/device/google/redfin" name="device/google/redfin" groups="android,device,redfin" />
+  <project path="android/device/google/redfin-kernel" name="device/google/redfin-kernel" groups="android,device,redfin" clone-depth="1" />
+  <project path="android/device/google/redfin-sepolicy" name="device/google/redfin-sepolicy" groups="android,device,redfin" />
+  <project path="android/device/google/sunfish" name="device/google/sunfish" groups="android,device,sunfish" />
+  <project path="android/device/google/sunfish-kernel" name="device/google/sunfish-kernel" groups="android,device,sunfish" clone-depth="1" />
+  <project path="android/device/google/sunfish-sepolicy" name="device/google/sunfish-sepolicy" groups="android,device,sunfish" />
   <project path="android/device/google/crosshatch" name="device/google/crosshatch" groups="android,device,crosshatch,generic_fs" />
   <project path="android/device/google/crosshatch-kernel" name="device/google/crosshatch-kernel" groups="android,device,crosshatch,generic_fs" clone-depth="1" />
   <project path="android/device/google/crosshatch-sepolicy" name="device/google/crosshatch-sepolicy" groups="android,device,crosshatch,generic_fs" />
   <project path="android/device/google/cuttlefish" name="device/google/cuttlefish" groups="android,device,pdk" />
-  <project path="android/device/google/cuttlefish_common" name="device/google/cuttlefish_common" groups="android,device,pdk" />
   <project path="android/device/google/cuttlefish_kernel" name="device/google/cuttlefish_kernel" groups="android,device,pdk" clone-depth="1" />
   <project path="android/device/google/cuttlefish_vmm" name="device/google/cuttlefish_vmm" groups="android,device,pdk" clone-depth="1" />
   <project path="android/device/google/fuchsia" name="device/google/fuchsia" groups="android,device" />
-  <project path="android/device/google/marlin" name="device/google/marlin" groups="android,device,marlin" />
-  <project path="android/device/google/marlin-kernel" name="device/google/marlin-kernel" groups="android,device,marlin" clone-depth="1" />
-  <project path="android/device/google/muskie" name="device/google/muskie" groups="android,device,generic_fs,muskie" />
-  <project path="android/device/google/taimen" name="device/google/taimen" groups="android,device,taimen" />
-  <project path="android/device/google/vrservices" name="device/google/vrservices" groups="android,pdk" clone-depth="1" />
-  <project path="android/device/google/wahoo" name="device/google/wahoo" groups="android,device,generic_fs,wahoo" />
-  <project path="android/device/google/wahoo-kernel" name="device/google/wahoo-kernel" groups="android,device,generic_fs,wahoo" clone-depth="1" />
+  <project path="android/device/google/trout" name="device/google/trout" groups="android,device,trout,gull" />
+  <project path="android/device/google/vrservices" name="device/google/vrservices" groups="android,pdk" />
+  <project path="android/device/google_car" name="device/google_car" groups="android,pdk" />
   <project path="android/device/linaro/bootloader/arm-trusted-firmware" name="device/linaro/bootloader/arm-trusted-firmware" />
   <project path="android/device/linaro/bootloader/edk2" name="device/linaro/bootloader/edk2" />
   <project path="android/device/linaro/bootloader/OpenPlatformPkg" name="device/linaro/bootloader/OpenPlatformPkg" />
+  <project path="android/device/linaro/dragonboard" name="device/linaro/dragonboard" groups="android,device,dragonboard,pdk" />
+  <project path="android/device/linaro/dragonboard-kernel" name="device/linaro/dragonboard-kernel" groups="android,device,dragonboard,pdk" clone-depth="1" />
   <project path="android/device/linaro/hikey" name="device/linaro/hikey" groups="android,device,hikey,pdk" />
   <project path="android/device/linaro/hikey-kernel" name="device/linaro/hikey-kernel" groups="android,device,hikey,pdk" clone-depth="1" />
   <project path="android/device/linaro/poplar" name="device/linaro/poplar" groups="android,device,poplar,pdk" />
   <project path="android/device/linaro/poplar-kernel" name="device/linaro/poplar-kernel" groups="android,device,poplar,pdk" clone-depth="1" />
+  <project name="device/mediatek/wembley-sepolicy" path="android/device/mediatek/wembley-sepolicy" groups="android,device"/>
   <project path="android/device/sample" name="device/sample" groups="android,pdk" />
   <project path="android/device/ti/beagle_x15" name="device/ti/beagle-x15" groups="android,device,beagle_x15,pdk" />
   <project path="android/device/ti/beagle_x15-kernel" name="device/ti/beagle-x15-kernel" groups="android,device,beagle_x15,pdk" clone-depth="1" />
-  <project path="android/external/ARMComputeLibrary" name="platform/external/ARMComputeLibrary" groups="android,pdk" />
   <project path="android/external/aac" name="platform/external/aac" groups="android,pdk" />
   <project path="android/external/adeb" name="platform/external/adeb" groups="android,pdk" />
   <project path="android/external/adhd" name="platform/external/adhd" groups="android,pdk" />
   <project path="android/external/adt-infra" name="platform/external/adt-infra" groups="android,adt-infra,notdefault,pdk-fs" />
   <project path="android/external/android-clat" name="platform/external/android-clat" groups="android,pdk" />
   <project path="android/external/androidplot" name="platform/external/androidplot" groups="android,pdk" />
+  <project path="android/external/angle" name="platform/external/angle" groups="android,pdk" />
   <project path="android/external/ant-glob" name="platform/external/ant-glob" groups="android,pdk" />
   <project path="android/external/antlr" name="platform/external/antlr" groups="android,pdk" />
   <project path="android/external/apache-commons-bcel" name="platform/external/apache-commons-bcel" groups="android,pdk" />
@@ -102,11 +112,12 @@
   <project path="android/external/apache-harmony" name="platform/external/apache-harmony" groups="android,pdk" />
   <project path="android/external/apache-http" name="platform/external/apache-http" groups="android,pdk" />
   <project path="android/external/apache-xml" name="platform/external/apache-xml" groups="android,pdk" />
-  <project path="android/external/archive-patcher" name="platform/external/archive-patcher" groups="android,pdk" />
   <project path="android/external/arm-neon-tests" name="platform/external/arm-neon-tests" groups="android,vendor" />
   <project path="android/external/arm-optimized-routines" name="platform/external/arm-optimized-routines" groups="android,pdk" />
+  <project path="android/external/arm-trusted-firmware" name="platform/external/arm-trusted-firmware" groups="android,pdk" />
   <project path="android/external/autotest" name="platform/external/autotest" groups="android,pdk-fs" />
   <project path="android/external/avb" name="platform/external/avb" groups="android,pdk" />
+  <project path="android/external/bc" name="platform/external/bc" groups="android,pdk" />
   <project path="android/external/bcc" name="platform/external/bcc" groups="android,pdk" />
   <project path="android/external/blktrace" name="platform/external/blktrace" groups="android,pdk" />
   <project path="android/external/boringssl" name="platform/external/boringssl" groups="android,pdk" />
@@ -118,23 +129,27 @@
   <project path="android/external/capstone" name="platform/external/capstone" groups="android,pdk" />
   <project path="android/external/catch2" name="platform/external/catch2" groups="android,pdk" />
   <project path="android/external/cblas" name="platform/external/cblas" groups="android,pdk" />
+  <project path="android/external/cbor-java" name="platform/external/cbor-java" groups="android,pdk" />
   <project path="android/external/chromium-libpac" name="platform/external/chromium-libpac" groups="android,pdk" />
   <project path="android/external/chromium-trace" name="platform/external/chromium-trace" groups="android,pdk" />
   <project path="android/external/chromium-webview" name="platform/external/chromium-webview" groups="android,pdk" clone-depth="1" />
   <project path="android/external/clang" name="platform/external/clang" groups="android,pdk" />
   <project path="android/external/cldr" name="platform/external/cldr" groups="android,pdk" />
-  <project path="android/external/cmockery" name="platform/external/cmockery" groups="android,pdk" />
   <project path="android/external/cn-cbor" name="platform/external/cn-cbor" groups="android,pdk" />
   <project path="android/external/compiler-rt" name="platform/external/compiler-rt" groups="android,pdk" />
   <project path="android/external/conscrypt" name="platform/external/conscrypt" groups="android,pdk" />
+  <project path="android/external/cpu_features" name="platform/external/cpu_features" groups="android,pdk" />
+  <project path="android/external/cpuinfo" name="platform/external/cpuinfo" groups="android,pdk" />
   <project path="android/external/crcalc" name="platform/external/crcalc" groups="android,pdk" />
   <project path="android/external/cros/system_api" name="platform/external/cros/system_api" groups="android,pdk" />
+  <project path="android/external/crosvm" name="platform/external/crosvm" groups="android,pdk" />
   <project path="android/external/curl" name="platform/external/curl" groups="android,pdk" />
   <project path="android/external/dagger2" name="platform/external/dagger2" groups="android,pdk" />
   <project path="android/external/deqp" name="platform/external/deqp" groups="android,pdk-fs" />
   <project path="android/external/deqp-deps/SPIRV-Headers" name="platform/external/deqp-deps/SPIRV-Headers" groups="android,pdk-fs" />
   <project path="android/external/deqp-deps/SPIRV-Tools" name="platform/external/deqp-deps/SPIRV-Tools" groups="android,pdk-fs" />
   <project path="android/external/deqp-deps/glslang" name="platform/external/deqp-deps/glslang" groups="android,pdk-fs" />
+  <project path="android/external/deqp-deps/amber" name="platform/external/deqp-deps/amber" groups="android,pdk-fs" />
   <project path="android/external/desugar" name="platform/external/desugar" groups="android,pdk" />
   <project path="android/external/dexmaker" name="platform/external/dexmaker" groups="android,pdk" />
   <project path="android/external/dlmalloc" name="platform/external/dlmalloc" groups="android,pdk" />
@@ -143,7 +158,6 @@
   <project path="android/external/doclava" name="platform/external/doclava" groups="android,pdk" />
   <project path="android/external/dokka" name="platform/external/dokka" groups="android,pdk" />
   <project path="android/external/drm_hwcomposer" name="platform/external/drm_hwcomposer" groups="android,drm_hwcomposer,pdk-fs" />
-  <project path="android/external/droiddriver" name="platform/external/droiddriver" groups="android,pdk" />
   <project path="android/external/drrickorang" name="platform/external/drrickorang" groups="android,pdk" />
   <project path="android/external/dtc" name="platform/external/dtc" groups="android,pdk"/>
   <project path="android/external/dynamic_depth" name="platform/external/dynamic_depth" groups="android,pdk" />
@@ -152,18 +166,23 @@
   <project path="android/external/eigen" name="platform/external/eigen" groups="android,pdk" />
   <project path="android/external/elfutils" name="platform/external/elfutils" groups="android,pdk" />
   <project path="android/external/emma" name="platform/external/emma" groups="android,pdk" />
-  <project path="android/external/epid-sdk" name="platform/external/epid-sdk" groups="android,pdk" />
   <project path="android/external/error_prone" name="platform/external/error_prone" groups="android,pdk" />
+  <project path="android/external/ethtool" name="platform/external/ethtool" groups="android,pdk" />
+  <project path="android/external/exoplayer" name="platform/external/exoplayer" groups="android,pdk" />
   <project path="android/external/expat" name="platform/external/expat" groups="android,pdk" />
   <project path="android/external/f2fs-tools" name="platform/external/f2fs-tools" groups="android,pdk" />
+  <project path="android/external/fastrpc" name="platform/external/fastrpc" groups="android,pdk" />
   <project path="android/external/fdlibm" name="platform/external/fdlibm" groups="android,pdk" />
   <project path="android/external/fec" name="platform/external/fec" groups="android,pdk" />
   <project path="android/external/flac" name="platform/external/flac" groups="android,pdk" />
   <project path="android/external/flatbuffers" name="platform/external/flatbuffers" groups="android,pdk" />
   <project path="android/external/fonttools" name="platform/external/fonttools" groups="android,pdk" />
+  <project path="android/external/fmtlib" name="platform/external/fmtlib" groups="android,pdk" />
   <project path="android/external/freetype" name="platform/external/freetype" groups="android,pdk" />
   <project path="android/external/fsck_msdos" name="platform/external/fsck_msdos" groups="android,pdk" />
   <project path="android/external/fsverity-utils" name="platform/external/fsverity-utils" groups="android,pdk" />
+  <project path="android/external/FP16" name="platform/external/FP16" groups="android,pdk" />
+  <project path="android/external/FXdiv" name="platform/external/FXdiv" groups="android,pdk" />
   <project path="android/external/gemmlowp" name="platform/external/gemmlowp" groups="android,pdk" />
   <project path="android/external/gflags" name="platform/external/gflags" groups="android,pdk" />
   <project path="android/external/giflib" name="platform/external/giflib" groups="android,pdk,qcom_msm8x26" />
@@ -172,6 +191,11 @@
   <project path="android/external/google-benchmark" name="platform/external/google-benchmark" groups="android,pdk" />
   <project path="android/external/google-breakpad" name="platform/external/google-breakpad" groups="android,pdk-fs" />
   <project path="android/external/google-fonts/arbutus-slab" name="platform/external/google-fonts/arbutus-slab" groups="android,pdk" />
+  <project path="android/external/google-fonts/barlow" name="platform/external/google-fonts/barlow" groups="android,pdk" />
+  <project path="android/external/google-fonts/karla" name="platform/external/google-fonts/karla" groups="android,pdk" />
+  <project path="android/external/google-fonts/lustria" name="platform/external/google-fonts/lustria" groups="android,pdk" />
+  <project path="android/external/google-fonts/fraunces" name="platform/external/google-fonts/fraunces" groups="android,pdk" />
+  <project path="android/external/google-fonts/big-shoulders-text" name="platform/external/google-fonts/big-shoulders-text" groups="android,pdk" />
   <project path="android/external/google-fonts/arvo" name="platform/external/google-fonts/arvo" groups="android,pdk" />
   <project path="android/external/google-fonts/carrois-gothic-sc" name="platform/external/google-fonts/carrois-gothic-sc" groups="android,pdk" />
   <project path="android/external/google-fonts/coming-soon" name="platform/external/google-fonts/coming-soon" groups="android,pdk" />
@@ -189,11 +213,13 @@
   <project path="android/external/grpc-grpc-java" name="platform/external/grpc-grpc-java" groups="android,pdk,tradefed" />
   <project path="android/external/guava" name="platform/external/guava" groups="android,pdk" />
   <project path="android/external/guice" name="platform/external/guice" groups="android,pdk" />
+  <project path="android/external/gwp_asan" name="platform/external/gwp_asan" groups="android,pdk" />
   <project path="android/external/hamcrest" name="platform/external/hamcrest" groups="android,pdk" />
   <project path="android/external/harfbuzz_ng" name="platform/external/harfbuzz_ng" groups="android,pdk,qcom_msm8x26" />
   <project path="android/external/honggfuzz" name="platform/external/honggfuzz" groups="android,pdk" />
   <project path="android/external/hyphenation-patterns" name="platform/external/hyphenation-patterns" groups="android,pdk" />
   <project path="android/external/icu" name="platform/external/icu" groups="android,pdk" />
+  <project path="android/external/igt-gpu-tools" name="platform/external/igt-gpu-tools" groups="android,pdk" />
   <project path="android/external/ImageMagick" name="platform/external/ImageMagick" groups="android,pdk" />
   <project path="android/external/image_io" name="platform/external/image_io" groups="android,pdk" />
   <project path="android/external/ims" name="platform/external/ims" groups="android,pdk" />
@@ -223,6 +249,7 @@
   <project path="android/external/kernel-headers" name="platform/external/kernel-headers" groups="android,pdk" />
   <project path="android/external/kmod" name="platform/external/kmod" groups="android,pdk" />
   <project path="android/external/kotlinc" name="platform/external/kotlinc" groups="android,pdk" />
+  <project path="android/external/kotlinx.coroutines" name="platform/external/kotlinx.coroutines" groups="android,pdk" />
   <project path="android/external/ksoap2" name="platform/external/ksoap2" groups="android,pdk" />
   <project path="android/external/libaom" name="platform/external/libaom" groups="android,pdk" />
   <project path="android/external/libavc" name="platform/external/libavc" groups="android,pdk" />
@@ -237,18 +264,20 @@
   <project path="android/external/libdaemon" name="platform/external/libdaemon" groups="android,pdk" />
   <project path="android/external/libdivsufsort" name="platform/external/libdivsufsort" groups="android,pdk" />
   <project path="android/external/libdrm" name="platform/external/libdrm" groups="android,pdk" />
+  <project path="android/external/libepoxy" name="platform/external/libepoxy" groups="android,pdk" />
   <project path="android/external/libese" name="platform/external/libese" groups="android,pdk" />
   <project path="android/external/libevent" name="platform/external/libevent" groups="android,pdk" />
   <project path="android/external/libexif" name="platform/external/libexif" groups="android,pdk" />
   <project path="android/external/libffi" name="platform/external/libffi" groups="android,pdk" />
   <project path="android/external/libgav1" name="platform/external/libgav1" groups="android,pdk" />
+  <project path="android/external/libfuse" name="platform/external/libfuse" groups="android,pdk" />
   <project path="android/external/libgsm" name="platform/external/libgsm" groups="android,pdk" />
   <project path="android/external/libhevc" name="platform/external/libhevc" groups="android,pdk" />
+  <project path="android/external/libiio" name="platform/external/libiio" groups="android,pdk" />
   <project path="android/external/libjpeg-turbo" name="platform/external/libjpeg-turbo" groups="android,pdk" />
   <project path="android/external/libkmsxx" name="platform/external/libkmsxx" groups="android,pdk" />
   <project path="android/external/libldac" name="platform/external/libldac" groups="android,pdk" />
   <project path="android/external/libmpeg2" name="platform/external/libmpeg2" groups="android,pdk" />
-  <project path="android/external/libmtp" name="platform/external/libmtp" groups="android,pdk" />
   <project path="android/external/libnetfilter_conntrack" name="platform/external/libnetfilter_conntrack" groups="android,pdk" />
   <project path="android/external/libnfnetlink" name="platform/external/libnfnetlink" groups="android,pdk" />
   <project path="android/external/libnl" name="platform/external/libnl" groups="android,pdk" />
@@ -258,20 +287,19 @@
   <project path="android/external/libphonenumber" name="platform/external/libphonenumber" groups="android,pdk" />
   <project path="android/external/libpng" name="platform/external/libpng" groups="android,pdk" />
   <project path="android/external/libprotobuf-mutator" name="platform/external/libprotobuf-mutator" groups="android,pdk" />
+  <project path="android/external/libsrtp2" name="platform/external/libsrtp2" groups="android,pdk" />
   <project path="android/external/libtextclassifier" name="platform/external/libtextclassifier" groups="android,pdk" />
   <project path="android/external/libunwind" name="platform/external/libunwind" groups="android,pdk" />
   <project path="android/external/libunwind_llvm" name="platform/external/libunwind_llvm" groups="android,pdk" />
   <project path="android/external/libusb" name="platform/external/libusb" groups="android,pdk" />
-  <project path="android/external/libusb-compat" name="platform/external/libusb-compat" groups="android,pdk" />
   <project path="android/external/libutf" name="platform/external/libutf" groups="android,pdk" />
   <project path="android/external/libvpx" name="platform/external/libvpx" groups="android,pdk" />
   <project path="android/external/libvterm" name="platform/external/libvterm" groups="android,pdk" />
   <project path="android/external/libxaac" name="platform/external/libxaac" groups="android,pdk" />
-  <project path="android/external/libxcam" name="platform/external/libxcam" groups="android,pdk" />
   <project path="android/external/libxkbcommon" name="platform/external/libxkbcommon" groups="android,pdk" />
   <project path="android/external/libxml2" name="platform/external/libxml2" groups="android,pdk,libxml2" />
   <project path="android/external/libyuv" name="platform/external/libyuv" groups="android,pdk,libyuv" />
-  <project path="android/external/linux-kselftest" name="platform/external/linux-kselftest" groups="android,vts,pdk" />
+  <project path="android/external/linux-kselftest" name="platform/external/linux-kselftest" groups="android,vts,pdk" clone-depth="1" />
   <project path="android/external/llvm" name="platform/external/llvm" groups="android,pdk" />
   <project path="android/external/lmfit" name="platform/external/lmfit" groups="android,pdk" />
   <project path="android/external/lua" name="platform/external/lua" groups="android,pdk" />
@@ -281,8 +309,8 @@
   <project path="android/external/markdown" name="platform/external/markdown" groups="android,pdk" />
   <project path="android/external/mdnsresponder" name="platform/external/mdnsresponder" groups="android,pdk" />
   <project path="android/external/mesa3d" name="platform/external/mesa3d" groups="android,pdk-cw-fs,pdk-fs" />
-  <project path="android/external/Microsoft-GSL" name="platform/external/Microsoft-GSL" groups="android,pdk" />
-  <project path="android/external/minigbm" name="platform/external/minigbm" groups="android,pdk" />
+  <project path="android/external/mime-support" name="platform/external/mime-support" groups="android,pdk" />
+  <project path="android/external/minigbm" name="platform/external/minigbm" groups="android,pdk" revision="1d184c5d7a78c11e8f435e0ed5b9a87a6264b57a" />
   <project path="android/external/minijail" name="platform/external/minijail" groups="android,pdk" />
   <project path="android/external/mksh" name="platform/external/mksh" groups="android,pdk" />
   <project path="android/external/mockftpserver" name="platform/external/mockftpserver" groups="android,pdk" />
@@ -300,7 +328,7 @@
   <project path="android/external/nfacct" name="platform/external/nfacct" groups="android,pdk" />
   <project path="android/external/nist-pkits" name="platform/external/nist-pkits" groups="android,pdk" />
   <project path="android/external/nist-sip" name="platform/external/nist-sip" groups="android,pdk" />
-  <project path="android/external/nos/host/generic" name="platform/external/nos/host/generic" groups="android,pixel" />
+  <project path="android/external/nos/host/generic" name="platform/external/nos/host/generic" groups="android,pdk" />
   <project path="android/external/noto-fonts" name="platform/external/noto-fonts" groups="android,pdk" />
   <project path="android/external/oauth" name="platform/external/oauth" groups="android,pdk" />
   <project path="android/external/objenesis" name="platform/external/objenesis" groups="android,pdk" />
@@ -308,85 +336,65 @@
   <project path="android/external/okhttp" name="platform/external/okhttp" groups="android,pdk" />
   <project path="android/external/one-true-awk" name="platform/external/one-true-awk" groups="android,pdk" />
   <project path="android/external/opencensus-java" name="platform/external/opencensus-java" groups="android,pdk,tradefed" />
+  <project path="android/external/OpenCL-CTS" name="platform/external/OpenCL-CTS" />
+  <project path="android/external/OpenCSD" name="platform/external/OpenCSD" groups="android,pdk" />
   <project path="android/external/openssh" name="platform/external/openssh" groups="android,pdk" />
+  <project path="android/external/oss-fuzz" name="platform/external/oss-fuzz" groups="android,pdk" />
   <project path="android/external/owasp/sanitizer" name="platform/external/owasp/sanitizer" groups="android,pdk" />
   <project path="android/external/parameter-framework" name="platform/external/parameter-framework" groups="android,pdk" />
   <project path="android/external/pcre" name="platform/external/pcre" groups="android,pdk" />
   <project path="android/external/pdfium" name="platform/external/pdfium" groups="android,pdk" />
-  <project path="android/external/perf_data_converter" name="platform/external/perf_data_converter" groups="android,pdk" />
   <project path="android/external/perfetto" name="platform/external/perfetto" groups="android,pdk" />
   <project path="android/external/piex" name="platform/external/piex" groups="android,pdk" />
   <project path="android/external/ply" name="platform/external/ply" groups="android,pdk" />
   <project path="android/external/ppp" name="platform/external/ppp" groups="android,pdk" />
   <project path="android/external/proguard" name="platform/external/proguard" groups="android,pdk" />
   <project path="android/external/protobuf" name="platform/external/protobuf" groups="android,pdk" />
-  <project path="android/external/protobuf-javalite" name="platform/external/protobuf-javalite" groups="android,pdk" />
+  <project path="android/external/psimd" name="platform/external/psimd" groups="android,pdk" />
+  <project path="android/external/pthreadpool" name="platform/external/pthreadpool" groups="android,pdk" />
   <project path="android/external/puffin" name="platform/external/puffin" groups="android,pdk" />
   <project path="android/external/python/apitools" name="platform/external/python/apitools" groups="android,pdk" />
-  <project path="android/external/python/appdirs" name="platform/external/python/appdirs" groups="android,vts,pdk" />
   <project path="android/external/python/asn1crypto" name="platform/external/python/asn1crypto" groups="android,pdk" />
-  <project path="android/external/python/atomicwrites" name="platform/external/python/atomicwrites" groups="android,pdk" />
-  <project path="android/external/python/attrs" name="platform/external/python/attrs" groups="android,pdk" />
-  <project path="android/external/python/cachetools" name="platform/external/python/cachetools" groups="android,vts,pdk" />
   <project path="android/external/python/cffi" name="platform/external/python/cffi" groups="android,pdk" />
   <project path="android/external/python/cpython2" name="platform/external/python/cpython2" groups="android,pdk" />
   <project path="android/external/python/cpython3" name="platform/external/python/cpython3" groups="android,pdk" />
   <project path="android/external/python/cryptography" name="platform/external/python/cryptography" groups="android,pdk" />
   <project path="android/external/python/dateutil" name="platform/external/python/dateutil" groups="android,pdk" />
-  <project path="android/external/python/dill" name="platform/external/python/dill" groups="android,vts,pdk" />
-  <project path="android/external/python/enum" name="platform/external/python/enum" groups="android,vts,pdk" />
   <project path="android/external/python/enum34" name="platform/external/python/enum34" groups="android,vts,pdk" />
   <project path="android/external/python/funcsigs" name="platform/external/python/funcsigs" groups="android,pdk" />
-  <project path="android/external/python/future" name="platform/external/python/future" groups="android,vts,pdk" />
   <project path="android/external/python/futures" name="platform/external/python/futures" groups="android,vts,pdk" />
-  <project path="android/external/python/gapic-google-cloud-pubsub-v1" name="platform/external/python/gapic-google-cloud-pubsub-v1" groups="android,vts,pdk" />
   <project path="android/external/python/google-api-python-client" name="platform/external/python/google-api-python-client" groups="android,vts,pdk" />
-  <project path="android/external/python/google-auth" name="platform/external/python/google-auth" groups="android,vts,pdk" />
-  <project path="android/external/python/google-auth-httplib2" name="platform/external/python/google-auth-httplib2" groups="android,vts,pdk" />
-  <project path="android/external/python/google-cloud-core" name="platform/external/python/google-cloud-core" groups="android,vts,pdk" />
-  <project path="android/external/python/google-cloud-pubsub" name="platform/external/python/google-cloud-pubsub" groups="android,vts,pdk" />
-  <project path="android/external/python/google-gax" name="platform/external/python/google-gax" groups="android,vts,pdk" />
-  <project path="android/external/python/googleapis" name="platform/external/python/googleapis" groups="android,vts,pdk" />
-  <project path="android/external/python/grpc-google-iam-v1" name="platform/external/python/grpc-google-iam-v1" groups="android,vts,pdk" />
-  <project path="android/external/python/grpcio" name="platform/external/python/grpcio" groups="android,vts,pdk" />
   <project path="android/external/python/httplib2" name="platform/external/python/httplib2" groups="android,vts,pdk" />
-  <project path="android/external/python/matplotlib" name="platform/external/python/matplotlib" groups="android,vts,pdk" />
+  <project path="android/external/python/ipaddress" name="platform/external/python/ipaddress" groups="android,pdk" />
   <project path="android/external/python/mock" name="platform/external/python/mock" groups="android,pdk" />
-  <project path="android/external/python/more-itertools" name="platform/external/python/more-itertools" groups="android,pdk" />
-  <project path="android/external/python/numpy" name="platform/external/python/numpy" groups="android,vts,pdk" />
   <project path="android/external/python/oauth2client" name="platform/external/python/oauth2client" groups="android,vts,pdk" />
-  <project path="android/external/python/olefile" name="platform/external/python/olefile" groups="android,vts,pdk" />
-  <project path="android/external/python/packaging" name="platform/external/python/packaging" groups="android,vts,pdk" />
-  <project path="android/external/python/parse" name="platform/external/python/parse" groups="android,vts,pdk" />
-  <project path="android/external/python/Pillow" name="platform/external/python/Pillow" groups="android,vts,pdk" />
-  <project path="android/external/python/ply" name="platform/external/python/ply" groups="android,vts,pdk" />
-  <project path="android/external/python/pluggy" name="platform/external/python/pluggy" groups="android,pdk" />
-  <project path="android/external/python/proto-google-cloud-pubsub-v1" name="platform/external/python/proto-google-cloud-pubsub-v1" groups="android,vts,pdk" />
-  <project path="android/external/python/protobuf" name="platform/external/python/protobuf" groups="android,vts,pdk" />
-  <project path="android/external/python/py" name="platform/external/python/py" groups="android,pdk" />
+  <project path="android/external/python/parse_type" name="platform/external/python/parse_type" groups="android,vts,pdk" />
   <project path="android/external/python/pyasn1" name="platform/external/python/pyasn1" groups="android,vts,pdk" />
   <project path="android/external/python/pyasn1-modules" name="platform/external/python/pyasn1-modules" groups="android,vts,pdk" />
+  <project path="android/external/python/pybind11" name="platform/external/python/pybind11" groups="android,pdk" />
   <project path="android/external/python/pycparser" name="platform/external/python/pycparser" groups="android,pdk" />
   <project path="android/external/python/pyopenssl" name="platform/external/python/pyopenssl" groups="android,pdk" />
-  <project path="android/external/python/pyparsing" name="platform/external/python/pyparsing" groups="android,vts,pdk" />
-  <project path="android/external/python/pytest" name="platform/external/python/pytest" groups="android,pdk" />
-  <project path="android/external/python/requests" name="platform/external/python/requests" groups="android,vts,pdk" />
   <project path="android/external/python/rsa" name="platform/external/python/rsa" groups="android,vts,pdk" />
-  <project path="android/external/python/scipy" name="platform/external/python/scipy" groups="android,vts,pdk" />
   <project path="android/external/python/setuptools" name="platform/external/python/setuptools" groups="android,vts,pdk" />
   <project path="android/external/python/six" name="platform/external/python/six" groups="android,vts,pdk" />
   <project path="android/external/python/uritemplates" name="platform/external/python/uritemplates" groups="android,vts,pdk" />
-  <project path="android/external/rapidjson" name="platform/external/rapidjson" groups="android,pdk" />
   <project path="android/external/rappor" name="platform/external/rappor" groups="android,pdk" />
   <project path="android/external/replicaisland" name="platform/external/replicaisland" groups="android,pdk" />
   <project path="android/external/rmi4utils" name="platform/external/rmi4utils" groups="android,pdk" />
-  <project path="android/external/robolectric" name="platform/external/robolectric" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/external/robolectric-shadows" name="platform/external/robolectric-shadows" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/external/roboto-fonts" name="platform/external/roboto-fonts" groups="android,pdk" />
   <project path="android/external/rootdev" name="platform/external/rootdev" groups="android,pdk" />
   <project path="android/external/Reactive-Extensions/RxCpp" name="platform/external/Reactive-Extensions/RxCpp" groups="android,pdk" />
+  <project path="android/external/rust/crates/byteorder" name="platform/external/rust/crates/byteorder" groups="android,pdk" />
+  <project path="android/external/rust/crates/libc" name="platform/external/rust/crates/libc" groups="android,pdk" />
+  <project path="android/external/rust/crates/proc-macro2" name="platform/external/rust/crates/proc-macro2" groups="android,pdk" />
+  <project path="android/external/rust/crates/quote" name="platform/external/rust/crates/quote" groups="android,pdk" />
+  <project path="android/external/rust/crates/remain" name="platform/external/rust/crates/remain" groups="android,pdk" />
+  <project path="android/external/rust/crates/syn" name="platform/external/rust/crates/syn" groups="android,pdk" />
+  <project path="android/external/rust/crates/unicode-xid" name="platform/external/rust/crates/unicode-xid" groups="android,pdk" />
   <project path="android/external/scapy" name="platform/external/scapy" groups="android,pdk-fs" />
   <project path="android/external/scrypt" name="platform/external/scrypt" groups="android,pdk" />
+  <project path="android/external/scudo" name="platform/external/scudo" groups="android,pdk" />
   <project path="android/external/seccomp-tests" name="platform/external/seccomp-tests" groups="android,pdk" />
   <project path="android/external/selinux" name="platform/external/selinux" groups="android,pdk" />
   <project path="android/external/setupcompat" name="platform/external/setupcompat" groups="android,pdk" />
@@ -395,7 +403,7 @@
   <project path="android/external/shaderc/spirv-headers" name="platform/external/shaderc/spirv-headers" groups="android,pdk" />
   <project path="android/external/shflags" name="platform/external/shflags" groups="android,pdk" />
   <project path="android/external/skia" name="platform/external/skia" groups="android,pdk,qcom_msm8x26" />
-  <project path="android/external/skqp" name="platform/external/skqp" groups="android,cts" clone-depth="1" />
+  <project path="android/external/skqp" name="platform/external/skqp" groups="android,cts,pdk" clone-depth="1" />
   <project path="android/external/sl4a" name="platform/external/sl4a" groups="android,pdk" />
   <project path="android/external/slf4j" name="platform/external/slf4j" groups="android,pdk" />
   <project path="android/external/smali" name="platform/external/smali" groups="android,pdk" />
@@ -403,14 +411,12 @@
   <project path="android/external/sonic" name="platform/external/sonic" groups="android,pdk" />
   <project path="android/external/sonivox" name="platform/external/sonivox" groups="android,pdk" />
   <project path="android/external/speex" name="platform/external/speex" groups="android,pdk" />
-  <project path="android/external/spirv-llvm" name="platform/external/spirv-llvm" groups="android,pdk" />
   <project path="android/external/sqlite" name="platform/external/sqlite" groups="android,pdk" />
   <project path="android/external/squashfs-tools" name="platform/external/squashfs-tools" groups="android,pdk" />
   <project path="android/external/strace" name="platform/external/strace" groups="android,pdk" />
   <project path="android/external/stressapptest" name="platform/external/stressapptest" groups="android,pdk" />
   <project path="android/external/subsampling-scale-image-view" name="platform/external/subsampling-scale-image-view" groups="android,pdk" clone-depth="1" />
   <project path="android/external/swiftshader" name="platform/external/swiftshader" groups="android,pdk" />
-  <project path="android/external/syzkaller" name="platform/external/syzkaller" groups="android,projectarch,pdk" />
   <project path="android/external/tagsoup" name="platform/external/tagsoup" groups="android,pdk" />
   <project path="android/external/tcpdump" name="platform/external/tcpdump" groups="android,pdk" />
   <project path="android/external/tensorflow" name="platform/external/tensorflow" groups="android,pdk" />
@@ -446,6 +452,7 @@
   <project path="android/external/xmp_toolkit" name="platform/external/xmp_toolkit" groups="android,pdk" />
   <project path="android/external/xz-embedded" name="platform/external/xz-embedded" groups="android,pdk" />
   <project path="android/external/xz-java" name="platform/external/xz-java" groups="android,pdk" />
+  <project path="android/external/XNNPACK" name="platform/external/XNNPACK" groups="android,pdk" />
   <project path="android/external/yapf" name="platform/external/yapf" groups="android,vts,projectarch,pdk" />
   <project path="android/external/zlib" name="platform/external/zlib" groups="android,pdk" />
   <project path="android/external/zopfli" name="platform/external/zopfli" groups="android,pdk" />
@@ -458,6 +465,10 @@
   <project path="android/frameworks/ex" name="platform/frameworks/ex" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/hardware/interfaces" name="platform/frameworks/hardware/interfaces" groups="android,pdk" />
   <project path="android/frameworks/layoutlib" name="platform/frameworks/layoutlib" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/frameworks/libs/systemui" name="platform/frameworks/libs/systemui" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/frameworks/libs/modules-utils" name="platform/frameworks/libs/modules-utils" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/frameworks/libs/native_bridge_support" name="platform/frameworks/libs/native_bridge_support" groups="android,pdk" />
+  <project path="android/frameworks/libs/net" name="platform/frameworks/libs/net" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/minikin" name="platform/frameworks/minikin" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/ml" name="platform/frameworks/ml" groups="android,pdk" />
   <project path="android/frameworks/multidex" name="platform/frameworks/multidex" groups="android,pdk-cw-fs,pdk-fs" />
@@ -468,10 +479,8 @@
   <project path="android/frameworks/opt/car/setupwizard" name="platform/frameworks/opt/car/setupwizard" groups="android,pdk" />
   <project path="android/frameworks/opt/chips" name="platform/frameworks/opt/chips" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/opt/colorpicker" name="platform/frameworks/opt/colorpicker" groups="android,pdk-cw-fs,pdk-fs" />
-  <project path="android/frameworks/opt/datetimepicker" name="platform/frameworks/opt/datetimepicker" groups="android,pdk-cw-fs,pdk-fs" />
-  <project path="android/frameworks/opt/gamesdk" name="platform/frameworks/opt/gamesdk" />
+  <project path="android/frameworks/opt/localepicker" name="platform/frameworks/opt/localepicker" />
   <project path="android/frameworks/opt/net/ethernet" name="platform/frameworks/opt/net/ethernet" groups="android,pdk-fs" />
-  <project path="android/frameworks/opt/net/ike" name="platform/frameworks/opt/net/ike" groups="android,pdk" />
   <project path="android/frameworks/opt/net/ims" name="platform/frameworks/opt/net/ims" groups="android,frameworks_ims,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/opt/net/voip" name="platform/frameworks/opt/net/voip" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/opt/net/wifi" name="platform/frameworks/opt/net/wifi" groups="android,pdk" />
@@ -479,6 +488,7 @@
   <project path="android/frameworks/opt/setupwizard" name="platform/frameworks/opt/setupwizard" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/opt/telephony" name="platform/frameworks/opt/telephony" groups="android,pdk" />
   <project path="android/frameworks/opt/timezonepicker" name="platform/frameworks/opt/timezonepicker" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/frameworks/opt/tv/tvsystem" name="platform/frameworks/opt/tv/tvsystem" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/opt/vcard" name="platform/frameworks/opt/vcard" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/frameworks/rs" name="platform/frameworks/rs" groups="android,pdk" />
   <project path="android/frameworks/wilhelm" name="platform/frameworks/wilhelm" groups="android,pdk-cw-fs,pdk-fs" />
@@ -486,13 +496,14 @@
   <project path="android/hardware/broadcom/wlan" name="platform/hardware/broadcom/wlan" groups="android,pdk,broadcom_wlan" />
   <project path="android/hardware/google/apf" name="platform/hardware/google/apf" groups="android,pdk" />
   <project path="android/hardware/google/av" name="platform/hardware/google/av" groups="android,pdk" />
+  <project path="android/hardware/google/camera" name="platform/hardware/google/camera" groups="android,pdk" />
   <project path="android/hardware/google/easel" name="platform/hardware/google/easel" groups="android,pdk,easel" />
   <project path="android/hardware/google/interfaces" name="platform/hardware/google/interfaces" groups="android,pdk" />
   <project path="android/hardware/google/pixel" name="platform/hardware/google/pixel" groups="android,generic_fs,pixel" />
   <project path="android/hardware/google/pixel-sepolicy" name="platform/hardware/google/pixel-sepolicy" groups="android,generic_fs,pixel" />
   <project path="android/hardware/interfaces" name="platform/hardware/interfaces" groups="android,pdk" />
   <project path="android/hardware/invensense" name="platform/hardware/invensense" groups="android,invensense,pdk" />
-  <project path="android/hardware/knowles/athletico/sound_trigger_hal" name="platform/hardware/knowles/athletico/sound_trigger_hal" groups="android,coral" />
+  <project path="android/hardware/knowles/athletico/sound_trigger_hal" name="platform/hardware/knowles/athletico/sound_trigger_hal" groups="android,coral,generic_fs" />
   <project path="android/hardware/libhardware" name="platform/hardware/libhardware" groups="android,pdk" />
   <project path="android/hardware/libhardware_legacy" name="platform/hardware/libhardware_legacy" groups="android,pdk" />
   <project path="android/hardware/nxp/nfc" name="platform/hardware/nxp/nfc" groups="android,pdk" />
@@ -509,12 +520,10 @@
   <project path="android/hardware/qcom/msm8960" name="platform/hardware/qcom/msm8960" groups="android,qcom_msm8960,pdk-qcom" />
   <project path="android/hardware/qcom/msm8994" name="platform/hardware/qcom/msm8994" groups="android,qcom_msm8994,pdk-qcom" />
   <project path="android/hardware/qcom/msm8996" name="platform/hardware/qcom/msm8996" groups="android,qcom_msm8996,pdk-qcom" />
-  <project path="android/hardware/qcom/msm8998" name="platform/hardware/qcom/msm8998" groups="android,qcom_msm8998,pdk-qcom" />
   <project path="android/hardware/qcom/msm8x09" name="platform/hardware/qcom/msm8x09" groups="android,qcom_msm8x09" />
   <project path="android/hardware/qcom/msm8x26" name="platform/hardware/qcom/msm8x26" groups="android,qcom_msm8x26,pdk-qcom" />
   <project path="android/hardware/qcom/msm8x27" name="platform/hardware/qcom/msm8x27" groups="android,qcom_msm8x27,pdk-qcom" />
   <project path="android/hardware/qcom/msm8x84" name="platform/hardware/qcom/msm8x84" groups="android,qcom_msm8x84,pdk-qcom" />
-  <project path="android/hardware/qcom/neuralnetworks/hvxservice" name="platform/hardware/qcom/neuralnetworks/hvxservice" groups="android,wahoo" />
   <project path="android/hardware/qcom/power" name="platform/hardware/qcom/power" groups="android,qcom,pdk-qcom" />
   <project path="android/hardware/qcom/sdm845/bt" name="platform/hardware/qcom/sdm845/bt" groups="android,generic_fs,qcom_sdm845" />
   <project path="android/hardware/qcom/sdm845/data/ipacfg-mgr" name="platform/hardware/qcom/sdm845/data/ipacfg-mgr" groups="android,generic_fs,vendor,qcom_sdm845" >
@@ -526,6 +535,16 @@
   <project path="android/hardware/qcom/sdm845/media" name="platform/hardware/qcom/sdm845/media" groups="android,generic_fs,qcom_sdm845" />
   <project path="android/hardware/qcom/sdm845/thermal" name="platform/hardware/qcom/sdm845/thermal" groups="android,generic_fs,qcom_sdm845" />
   <project path="android/hardware/qcom/sdm845/vr" name="platform/hardware/qcom/sdm845/vr" groups="android,generic_fs,qcom_sdm845" />
+  <project path="android/hardware/qcom/sm7150/gps" name="platform/hardware/qcom/sm7150/gps" groups="android,qcom_sm7150" >
+    <linkfile src="os_pickup.mk" dest="android/hardware/qcom/sm7150/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="android/hardware/qcom/sm7150/Android.bp" />
+  </project>
+  <project path="android/hardware/qcom/sm7250/display" name="platform/hardware/qcom/sm7250/display" groups="android,qcom_sm7250" />
+  <project path="android/hardware/qcom/sm7250/gps" name="platform/hardware/qcom/sm7250/gps" groups="android,qcom_sm7250" >
+    <linkfile src="os_pickup.mk" dest="android/hardware/qcom/sm7250/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="android/hardware/qcom/sm7250/Android.bp" />
+  </project>
+  <project path="android/hardware/qcom/sm7250/media" name="platform/hardware/qcom/sm7250/media" groups="android,qcom_sm7250" />
   <project path="android/hardware/qcom/sm8150/data/ipacfg-mgr" name="platform/hardware/qcom/sm8150/data/ipacfg-mgr" groups="android,qcom_sm8150" >
     <linkfile src="os_pickup.mk" dest="android/hardware/qcom/sm8150/Android.mk" />
     <linkfile src="os_pickup.bp" dest="android/hardware/qcom/sm8150/Android.bp" />
@@ -535,13 +554,17 @@
   <project path="android/hardware/qcom/sm8150/media" name="platform/hardware/qcom/sm8150/media" groups="android,qcom_sm8150" />
   <project path="android/hardware/qcom/sm8150/thermal" name="platform/hardware/qcom/sm8150/thermal" groups="android,qcom_sm8150" />
   <project path="android/hardware/qcom/sm8150/vr" name="platform/hardware/qcom/sm8150/vr" groups="android,qcom_sm8150" />
+  <project path="android/hardware/qcom/sm8150p/gps" name="platform/hardware/qcom/sm8150p/gps" groups="android,qcom_sm8150p" >
+    <linkfile src="os_pickup.mk" dest="android/hardware/qcom/sm8150p/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="android/hardware/qcom/sm8150p/Android.bp" />
+  </project>
   <project path="android/hardware/qcom/wlan" name="platform/hardware/qcom/wlan" groups="android,qcom_wlan,pdk-qcom" />
   <project path="android/hardware/ril" name="platform/hardware/ril" groups="android,pdk" />
   <project path="android/hardware/st/nfc" name="platform/hardware/st/nfc" groups="android,pdk" />
   <project path="android/hardware/st/secure_element" name="platform/hardware/st/secure_element" groups="android,pdk" />
   <project path="android/hardware/ti/am57x" name="platform/hardware/ti/am57x" groups="android,pdk" />
-  <project path="android/kernel/build" name="kernel/build" />
   <project path="android/kernel/configs" name="kernel/configs" groups="android,vts,pdk" />
+  <project path="android/kernel/prebuilts/4.19/arm64" name="kernel/prebuilts/4.19/arm64" groups="android,pdk" clone-depth="1" />
   <project path="android/kernel/tests" name="kernel/tests" groups="android,vts,pdk" />
   <project path="android/libcore" name="platform/libcore" groups="android,pdk" />
   <project path="android/libnativehelper" name="platform/libnativehelper" groups="android,pdk" />
@@ -550,23 +573,22 @@
   <project path="android/packages/apps/Browser2" name="platform/packages/apps/Browser2" groups="android,pdk-fs" />
   <project path="android/packages/apps/Calendar" name="platform/packages/apps/Calendar" groups="android,pdk-fs" />
   <project path="android/packages/apps/Camera2" name="platform/packages/apps/Camera2" groups="android,pdk-fs" />
+  <project path="android/packages/apps/Car/Calendar" name="platform/packages/apps/Car/Calendar" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Cluster" name="platform/packages/apps/Car/Cluster" groups="android,pdk-fs" />
+  <project path="android/packages/apps/Car/CompanionDeviceSupport" name="platform/packages/apps/Car/CompanionDeviceSupport" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Dialer" name="platform/packages/apps/Car/Dialer" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Hvac" name="platform/packages/apps/Car/Hvac" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/LatinIME" name="platform/packages/apps/Car/LatinIME" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Launcher" name="platform/packages/apps/Car/Launcher" groups="android,pdk-fs" />
-  <project path="android/packages/apps/Car/LensPicker" name="platform/packages/apps/Car/LensPicker" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/LinkViewer" name="platform/packages/apps/Car/LinkViewer" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/LocalMediaPlayer" name="platform/packages/apps/Car/LocalMediaPlayer" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Media" name="platform/packages/apps/Car/Media" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Messenger" name="platform/packages/apps/Car/Messenger" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Notification" name="platform/packages/apps/Car/Notification" groups="android,pdk-fs" />
-  <project path="android/packages/apps/Car/Overview" name="platform/packages/apps/Car/Overview" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Radio" name="platform/packages/apps/Car/Radio" groups="android,pdk-fs" />
+  <project path="android/packages/apps/Car/RotaryController" name="platform/packages/apps/Car/RotaryController" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/Settings" name="platform/packages/apps/Car/Settings" groups="android,pdk-fs" />
-  <project path="android/packages/apps/Car/Stream" name="platform/packages/apps/Car/Stream" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/SystemUpdater" name="platform/packages/apps/Car/SystemUpdater" groups="android,pdk-fs" />
-  <project path="android/packages/apps/Car/externallibs" name="platform/packages/apps/Car/externallibs" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/libs" name="platform/packages/apps/Car/libs" groups="android,pdk-fs" />
   <project path="android/packages/apps/Car/tests" name="platform/packages/apps/Car/tests" groups="android,pdk-fs" />
   <project path="android/packages/apps/CarrierConfig" name="platform/packages/apps/CarrierConfig" groups="android,pdk-cw-fs,pdk-fs" />
@@ -577,7 +599,6 @@
   <project path="android/packages/apps/DevCamera" name="platform/packages/apps/DevCamera" groups="android,pdk" />
   <project path="android/packages/apps/Dialer" name="platform/packages/apps/Dialer" groups="android,pdk-fs" />
   <project path="android/packages/apps/DocumentsUI" name="platform/packages/apps/DocumentsUI" groups="android,pdk-cw-fs,pdk-fs" />
-  <project path="android/packages/apps/Email" name="platform/packages/apps/Email" groups="android,pdk-fs" />
   <project path="android/packages/apps/EmergencyInfo" name="platform/packages/apps/EmergencyInfo" groups="android,pdk-fs" />
   <project path="android/packages/apps/Gallery" name="platform/packages/apps/Gallery" groups="android,pdk-fs" />
   <project path="android/packages/apps/Gallery2" name="platform/packages/apps/Gallery2" groups="android,pdk-fs" />
@@ -590,12 +611,14 @@
   <project path="android/packages/apps/Music" name="platform/packages/apps/Music" groups="android,pdk-fs" />
   <project path="android/packages/apps/MusicFX" name="platform/packages/apps/MusicFX" groups="android,pdk-fs" />
   <project path="android/packages/apps/Nfc" name="platform/packages/apps/Nfc" groups="android,apps_nfc,pdk-fs" />
+  <project path="android/packages/apps/OnDeviceAppPrediction" name="platform/packages/apps/OnDeviceAppPrediction" groups="android,pdk-fs" />
   <project path="android/packages/apps/OneTimeInitializer" name="platform/packages/apps/OneTimeInitializer" groups="android,pdk-fs" />
   <project path="android/packages/apps/PermissionController" name="platform/packages/apps/PackageInstaller" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/apps/PhoneCommon" name="platform/packages/apps/PhoneCommon" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/apps/Protips" name="platform/packages/apps/Protips" groups="android,pdk-fs" />
   <project path="android/packages/apps/Provision" name="platform/packages/apps/Provision" groups="android,pdk-fs" />
   <project path="android/packages/apps/QuickSearchBox" name="platform/packages/apps/QuickSearchBox" groups="android,pdk-fs" />
+  <project path="android/packages/apps/QuickAccessWallet" name="platform/packages/apps/QuickAccessWallet" groups="android,pdk-fs" />
   <project path="android/packages/apps/SafetyRegulatoryInfo" name="platform/packages/apps/SafetyRegulatoryInfo" groups="android,pdk-fs" />
   <project path="android/packages/apps/SampleLocationAttribution" name="platform/packages/apps/SampleLocationAttribution" groups="android,pdk-fs" />
   <project path="android/packages/apps/SecureElement" name="platform/packages/apps/SecureElement" groups="android,apps_se,pdk-fs" />
@@ -614,18 +637,24 @@
   <project path="android/packages/apps/Traceur" name="platform/packages/apps/Traceur" groups="android,pdk-fs" />
   <project path="android/packages/apps/TvSettings" name="platform/packages/apps/TvSettings" groups="android,pdk-fs" />
   <project path="android/packages/apps/TV" name="platform/packages/apps/TV" groups="android,pdk" />
-  <project path="android/packages/apps/UnifiedEmail" name="platform/packages/apps/UnifiedEmail" groups="android,pdk-fs" />
   <project path="android/packages/apps/UniversalMediaPlayer" name="platform/packages/apps/UniversalMediaPlayer" />
-  <project path="android/packages/apps/WallpaperPicker" name="platform/packages/apps/WallpaperPicker" groups="android,pdk-fs"  />
+  <project path="android/packages/apps/WallpaperPicker" name="platform/packages/apps/WallpaperPicker" groups="android,pdk-fs" />
   <project path="android/packages/apps/WallpaperPicker2" name="platform/packages/apps/WallpaperPicker2" groups="android,pdk-fs" />
   <project path="android/packages/inputmethods/LatinIME" name="platform/packages/inputmethods/LatinIME" groups="android,pdk-fs" />
+  <project path="android/packages/inputmethods/LeanbackIME" name="platform/packages/inputmethods/LeanbackIME" groups="android,pdk-fs" />
+  <project path="android/packages/modules/ArtPrebuilt" name="platform/packages/modules/ArtPrebuilt" groups="android,pdk" clone-depth="1" />
   <project path="android/packages/modules/CaptivePortalLogin" name="platform/packages/modules/CaptivePortalLogin" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/packages/modules/CellBroadcastService" name="platform/packages/modules/CellBroadcastService" groups="android,pdk" />
+  <project path="android/packages/modules/Cronet" name="platform/packages/modules/Cronet" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/packages/modules/DnsResolver" name="platform/packages/modules/DnsResolver" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/modules/ExtServices" name="platform/packages/modules/ExtServices" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/packages/modules/IPsec" name="platform/packages/modules/IPsec" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/modules/ModuleMetadata" name="platform/packages/modules/ModuleMetadata" groups="android,pdk" />
   <project path="android/packages/modules/NetworkPermissionConfig" name="platform/packages/modules/NetworkPermissionConfig" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/modules/NetworkStack" name="platform/packages/modules/NetworkStack" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/packages/modules/SdkExtensions" name="platform/packages/modules/SdkExtensions" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/modules/TestModule" name="platform/packages/modules/TestModule" />
-  <project path="android/packages/providers/ApplicationsProvider" name="platform/packages/providers/ApplicationsProvider" groups="android,pdk-fs" />
+  <project path="android/packages/modules/vndk" name="platform/packages/modules/vndk" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/providers/BlockedNumberProvider" name="platform/packages/providers/BlockedNumberProvider" groups="android,pdk-fs" />
   <project path="android/packages/providers/BookmarkProvider" name="platform/packages/providers/BookmarkProvider" groups="android,pdk-fs" />
   <project path="android/packages/providers/CalendarProvider" name="platform/packages/providers/CalendarProvider" groups="android,pdk-cw-fs,pdk-fs" />
@@ -643,12 +672,15 @@
   <project path="android/packages/services/AlternativeNetworkAccess" name="platform/packages/services/AlternativeNetworkAccess" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/services/Car" name="platform/packages/services/Car" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/services/Mms" name="platform/packages/services/Mms" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/packages/services/Mtp" name="platform/packages/services/Mtp" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/services/Telecomm" name="platform/packages/services/Telecomm" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/packages/services/Telephony" name="platform/packages/services/Telephony" groups="android,pdk-cw-fs,pdk-fs" />
+  <project path="android/packages/wallpapers/ImageWallpaper" name="platform/packages/wallpapers/ImageWallpaper" groups="android,pdk-fs" />
   <project path="android/packages/wallpapers/LivePicker" name="platform/packages/wallpapers/LivePicker" groups="android,pdk-fs" />
   <project path="android/pdk" name="platform/pdk" groups="android,pdk" />
   <project path="android/platform_testing" name="platform/platform_testing" groups="android,pdk-fs,pdk-cw-fs,cts" />
   <project path="android/prebuilts/abi-dumps/ndk" name="platform/prebuilts/abi-dumps/ndk" groups="android,pdk-fs" clone-depth="1" />
+  <project path="android/prebuilts/abi-dumps/platform" name="platform/prebuilts/abi-dumps/platform" groups="android,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/abi-dumps/vndk" name="platform/prebuilts/abi-dumps/vndk" groups="android,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/android-emulator" name="platform/prebuilts/android-emulator" groups="android,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/asuite" name="platform/prebuilts/asuite" groups="android,pdk" clone-depth="1" />
@@ -659,6 +691,7 @@
   <project path="android/prebuilts/clang-tools" name="platform/prebuilts/clang-tools" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/clang/host/darwin-x86" name="platform/prebuilts/clang/host/darwin-x86" groups="android,pdk,darwin" clone-depth="1" />
   <project path="android/prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="android,pdk" clone-depth="1" />
+  <project path="android/prebuilts/cmdline-tools" name="platform/prebuilts/cmdline-tools" groups="android,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/devtools" name="platform/prebuilts/devtools" groups="android,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/fuchsia_sdk" name="platform/prebuilts/fuchsia_sdk" groups="android,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" groups="android,pdk,darwin,arm" clone-depth="1" />
@@ -677,28 +710,32 @@
   <project path="android/prebuilts/go/darwin-x86" name="platform/prebuilts/go/darwin-x86" groups="android,darwin,pdk,tradefed" clone-depth="1" />
   <project path="android/prebuilts/go/linux-x86" name="platform/prebuilts/go/linux-x86" groups="android,linux,pdk,tradefed" clone-depth="1" />
   <project path="android/prebuilts/gradle-plugin" name="platform/prebuilts/gradle-plugin" groups="android,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
+  <project path="android/prebuilts/jdk/jdk11" name="platform/prebuilts/jdk/jdk11" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/jdk/jdk8" name="platform/prebuilts/jdk/jdk8" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/jdk/jdk9" name="platform/prebuilts/jdk/jdk9" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/manifest-merger" name="platform/prebuilts/manifest-merger" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/maven_repo/android" name="platform/prebuilts/maven_repo/android" groups="android,pdk-cw-fs,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/maven_repo/bumptech" name="platform/prebuilts/maven_repo/bumptech" groups="android,pdk-cw-fs,pdk-fs" clone-depth="1" />
-  <project path="android/prebuilts/maven_repo/google-play-service-client-libraries-3p" name="platform/prebuilts/maven_repo/google-play-service-client-libraries-3p" clone-depth="1" />
   <project path="android/prebuilts/misc" name="platform/prebuilts/misc" groups="android,pdk" clone-depth="1" />
+  <project path="android/prebuilts/module_sdk/art" name="platform/prebuilts/module_sdk/art" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/ndk" name="platform/prebuilts/ndk" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/ktlint" name="platform/prebuilts/ktlint" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/python/darwin-x86/2.7.5" name="platform/prebuilts/python/darwin-x86/2.7.5" groups="android,darwin,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/python/linux-x86/2.7.5" name="platform/prebuilts/python/linux-x86/2.7.5" groups="android,linux,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
   <project path="android/prebuilts/qemu-kernel" name="platform/prebuilts/qemu-kernel" groups="android,pdk" clone-depth="1" />
+  <project path="android/prebuilts/remoteexecution-client" name="platform/prebuilts/remoteexecution-client" groups="android,pdk" clone-depth="1" />
+  <project path="android/prebuilts/runtime" name="platform/prebuilts/runtime" groups="android,pdk" clone-depth="1" />
+  <project path="android/prebuilts/rust" name="platform/prebuilts/rust" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/r8" name="platform/prebuilts/r8" groups="android,pdk" clone-depth="1" />
-  <project path="android/prebuilts/sdk" name="platform/prebuilts/sdk" groups="android,pdk" clone-depth="1" />
+  <project path="android/prebuilts/sdk" name="platform/prebuilts/sdk" groups="android,pdk" clone-depth="1" >
+    <linkfile src="current/androidx-README.md" dest="android/frameworks/support.md" />
+  </project>
   <project path="android/prebuilts/tools" name="platform/prebuilts/tools" groups="android,pdk,tools" clone-depth="1" />
   <project path="android/prebuilts/vndk/v27" name="platform/prebuilts/vndk/v27" groups="android,pdk" clone-depth="1" />
   <project path="android/prebuilts/vndk/v28" name="platform/prebuilts/vndk/v28" groups="android,pdk" clone-depth="1" />
-  <project path="android/sdk" name="platform/sdk" groups="android,pdk-cw-fs,pdk-fs">
-    <linkfile src="current/androidx-README.md" dest="android/frameworks/support/README.md" />
-  </project>
+  <project path="android/prebuilts/vndk/v29" name="platform/prebuilts/vndk/v29" groups="android,pdk" clone-depth="1" />
+  <project path="android/sdk" name="platform/sdk" groups="android,pdk-cw-fs,pdk-fs" />
   <project path="android/system/apex" name="platform/system/apex" groups="android,pdk" />
-  <project path="android/system/ashmemd" name="platform/system/ashmemd" groups="android,pdk" />
   <project path="android/system/bt" name="platform/system/bt" groups="android,pdk" />
   <project path="android/system/bpf" name="platform/system/bpf" groups="android,pdk" />
   <project path="android/system/bpfprogs" name="platform/system/bpfprogs" groups="android,pdk" />
@@ -712,8 +749,10 @@
   <project path="android/system/gsid" name="platform/system/gsid" groups="android,pdk" />
   <project path="android/system/hardware/interfaces" name="platform/system/hardware/interfaces" groups="android,pdk" />
   <project path="android/system/hwservicemanager" name="platform/system/hwservicemanager" groups="android,pdk" />
+  <project path="android/system/incremental_delivery" name="platform/system/incremental_delivery" groups="android,pdk" />
   <project path="android/system/iorap" name="platform/system/iorap" groups="android,pdk" />
   <project path="android/system/keymaster" name="platform/system/keymaster" groups="android,pdk" />
+  <project path="android/system/libartpalette" name="platform/system/libartpalette" groups="android,pdk" />
   <project path="android/system/libfmq" name="platform/system/libfmq" groups="android,pdk" />
   <project path="android/system/libhidl" name="platform/system/libhidl" groups="android,pdk" />
   <project path="android/system/libhwbinder" name="platform/system/libhwbinder" groups="android,pdk" />
@@ -722,27 +761,33 @@
   <project path="android/system/libvintf" name="platform/system/libvintf" groups="android,pdk" />
   <project path="android/system/linkerconfig" name="platform/system/linkerconfig" groups="android,pdk" />
   <project path="android/system/media" name="platform/system/media" groups="android,pdk" />
+  <project path="android/system/memory/libion" name="platform/system/memory/libion" groups="android,pdk" />
+  <project path="android/system/memory/libmeminfo" name="platform/system/memory/libmeminfo" groups="android,pdk" />
+  <project path="android/system/memory/libmemtrack" name="platform/system/memory/libmemtrack" groups="android,pdk" />
+  <project path="android/system/memory/libmemunreachable" name="platform/system/memory/libmemunreachable" groups="android,pdk" />
+  <project path="android/system/memory/lmkd" name="platform/system/memory/lmkd" groups="android,pdk" />
   <project path="android/system/netd" name="platform/system/netd" groups="android,pdk" />
   <project path="android/system/nfc" name="platform/system/nfc" groups="android,pdk" />
   <project path="android/system/nvram" name="platform/system/nvram" groups="android,pdk" />
   <project path="android/system/security" name="platform/system/security" groups="android,pdk" />
   <project path="android/system/sepolicy" name="platform/system/sepolicy" groups="android,pdk" />
   <project path="android/system/server_configurable_flags" name="platform/system/server_configurable_flags" groups="android,pdk"/>
+  <project path="android/system/teeui" name="platform/system/teeui" groups="android,pdk" />
   <project path="android/system/testing/gtest_extras" name="platform/system/testing/gtest_extras" groups="android,pdk" />
   <project path="android/system/timezone" name="platform/system/timezone" groups="android,pdk" />
   <project path="android/system/tools/aidl" name="platform/system/tools/aidl" groups="android,pdk" />
   <project path="android/system/tools/hidl" name="platform/system/tools/hidl" groups="android,pdk" />
+  <project path="android/system/tools/mkbootimg" name="platform/system/tools/mkbootimg" groups="android,pdk" />
   <project path="android/system/tools/sysprop" name="platform/system/tools/sysprop" groups="android,pdk" />
   <project path="android/system/tools/xsdc" name="platform/system/tools/xsdc" groups="android,pdk" />
   <project path="android/system/update_engine" name="platform/system/update_engine" groups="android,pdk" />
-  <project path="android/system/ucontainer" name="platform/system/ucontainer" groups="android,pdk" />
   <project path="android/system/vold" name="platform/system/vold" groups="android,pdk" />
   <project path="android/test/framework" name="platform/test/framework" groups="android,vts,projectarch,pdk" />
   <project path="android/test/mlts/benchmark" name="platform/test/mlts/benchmark" groups="android,pdk" />
   <project path="android/test/mlts/models" name="platform/test/mlts/models" groups="android,pdk" />
+  <project path="android/test/app_compat/csuite" name="platform/test/app_compat/csuite" />
   <project path="android/test/mts" name="platform/test/mts" />
   <project path="android/test/suite_harness" name="platform/test/suite_harness" groups="android,cts,pdk-cw-fs,pdk-fs" />
-  <project path="android/test/vti/alert" name="platform/test/vti/alert" groups="android,vts,projectarch,pdk" />
   <project path="android/test/vti/dashboard" name="platform/test/vti/dashboard" groups="android,vts,projectarch,pdk" />
   <project path="android/test/vti/fuzz_test_serving" name="platform/test/vti/fuzz_test_serving" groups="android,vts,projectarch,pdk" />
   <project path="android/test/vti/test_serving" name="platform/test/vti/test_serving" groups="android,vts,projectarch,pdk" />
@@ -765,15 +810,17 @@
   <project path="android/tools/asuite" name="platform/tools/asuite" groups="android,pdk" />
   <project path="android/tools/base" name="platform/tools/base" groups="android,notdefault,tools" />
   <project path="android/tools/build" name="platform/tools/build" groups="android,notdefault,tools" />
+  <project path="android/tools/carrier_settings" name="platform/tools/carrier_settings" groups="android,tools" />
   <project path="android/tools/currysrc" name="platform/tools/currysrc" groups="android,pdk" />
   <project path="android/tools/dexter" name="platform/tools/dexter" groups="android,tools,pdk-fs" />
+  <project path="android/tools/doc_generation" name="platform/tools/doc_generation" groups="android,tools,pdk" />
   <project path="android/tools/external_updater" name="platform/tools/external_updater" groups="android,tools" />
   <project path="android/tools/external/fat32lib" name="platform/tools/external/fat32lib" groups="android,tools" />
-  <project path="android/tools/external/gradle" name="platform/tools/external/gradle" groups="android,tools" clone-depth="1" />
   <project path="android/tools/idea" name="platform/tools/idea" groups="android,notdefault,tools" />
   <project path="android/tools/loganalysis" name="platform/tools/loganalysis" groups="android,nopresubmit,pdk,tradefed" />
   <project path="android/tools/metalava" name="platform/tools/metalava" groups="android,pdk,tools" />
   <project path="android/tools/motodev" name="platform/tools/motodev" groups="android,notdefault,motodev" />
+  <project path="android/tools/platform-compat" name="tools/platform-compat" groups="android,pdk-cw-fs,pdk-fs,pdk" />
   <project path="android/tools/ndkports" name="platform/tools/ndkports" groups="android,pdk" />
   <project path="android/tools/repohooks" name="platform/tools/repohooks" groups="android,adt-infra,cts,developers,motodev,pdk,tools,tradefed" />
   <project path="android/tools/security" name="platform/tools/security" groups="android,pdk,tools" />
@@ -783,6 +830,7 @@
   <project path="android/tools/test/graphicsbenchmark" name="platform/tools/test/graphicsbenchmark" groups="android,pdk" />
   <project path="android/tools/tradefederation/core" name="platform/tools/tradefederation" groups="android,pdk,tradefed" />
   <project path="android/tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="android,pdk,tradefed" />
+  <project path="android/tools/treble" name="platform/tools/treble" groups="android,tools,pdk" />
   <project path="android/tools/trebuchet" name="platform/tools/trebuchet" groups="android,tools,cts,pdk,pdk-cw-fs,pdk-fs" />
 
   <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" />
