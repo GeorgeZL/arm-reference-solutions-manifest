@@ -8,8 +8,8 @@
   <default revision="refs/tags/android-11.0.0_r27"
            remote="aosp"
            sync-j="4" />
-  <project name="landing-teams/working/arm/device-profile" path="android/device/arm" remote="linaro" revision="f03caf56f20332f5b5608a5b4ba731649d5af343" groups="android" />
-   <project name="landing-teams/working/arm/build-scripts" path="android/build-scripts" remote="linaro" revision="65d21e5267d474792901b433b28322063ffb36c7" groups="android" />
+  <project name="landing-teams/working/arm/device-profile" path="android/device/arm" remote="linaro" revision="refs/tags/TC0-2021.04.23" groups="android" />
+   <project name="landing-teams/working/arm/build-scripts" path="android/build-scripts" remote="linaro" revision="refs/tags/TC0-2021.04.23" groups="android" />
 
   <project path="android/build/make" name="platform/build" groups="android,pdk" >
     <copyfile src="core/root.mk" dest="android/Makefile" />
