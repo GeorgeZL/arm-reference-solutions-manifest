@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="http://android.googlesource.com" name="aosp"/>
-  <remote fetch="https://gitlab.arm.com" name="gitlab"/>
-  
+  <remote fetch="https://git.gitlab.arm.com/" name="arm"/>
+
   <default remote="aosp" revision="master" sync-j="4"/>
-  
+
   <manifest-server url="http://android-smartsync.corp.google.com/android.googlesource.com/manifestserver"/>
-  
+
   <project groups="android,device,yukawa,pdk" name="device/amlogic/yukawa" path="android/device/amlogic/yukawa" revision="45d5fb7c41d51e9d89b823c37b5cb82b1329bdbf"/>
   <project clone-depth="2" groups="android,device,yukawa,pdk" name="device/amlogic/yukawa-kernel" path="android/device/amlogic/yukawa-kernel" revision="73a206d155e93f8be08f6504136c1ebf3db507d0"/>
   <project groups="android,pdk-cw-fs,pdk" name="device/common" path="android/device/common" revision="85a2054f6e4ac15a7e21274bf97e6f18bd9a1811"/>
@@ -1051,8 +1051,8 @@
   <project groups="android,pdk,tradefed" name="platform/tools/tradefederation/prebuilts" path="android/tools/tradefederation/prebuilts" revision="10d2c069a3d6c317198072a99959d3b6f80e942b"/>
   <project groups="android,tools,pdk" name="platform/tools/treble" path="android/tools/treble" revision="70e844441019e6681ec07d070990812eb9eafb59"/>
   <project groups="android,tools,cts,pdk,pdk-cw-fs,pdk-fs" name="platform/tools/trebuchet" path="android/tools/trebuchet" revision="375f839d08f42cde0da7d623a44d0d082610662d"/>
-  <project groups="android" name="arm-reference-solutions/device-profile" path="android/device/arm" remote="gitlab" revision="806b00cb860a74f0d583f15d2108669d14feb2f8"/>
-  <project groups="android" name="arm-reference-solutions/build-scripts" path="android/build-scripts" remote="gitlab" revision="c22f660ba239c56f95007a5a0175662b6de04b47"/>
+  <project groups="android" name="arm-reference-solutions/device-profile" path="android/device/arm" remote="arm" revision="refs/tags/TC0-2021.07.31"/>
+  <project groups="android" name="arm-reference-solutions/build-scripts" path="android/build-scripts" remote="arm" revision="refs/tags/TC0-2021.07.31" />
   <project name="toolchain/benchmark" path="android/toolchain/benchmark" revision="6a2f47fb4d2707263b2d4336cca469d33b64406f"/>
   <project groups="android,pdk" name="toolchain/llvm-project" path="android/external/llvm-project" revision="664b187160dc951c2cea3b69f92decf358d8e75a"/>
   <project groups="android,pdk" name="toolchain/pgo-profiles" path="android/toolchain/pgo-profiles" revision="f76785651c6a6b23bfb8f4e5e801e2abdf923db5"/>
