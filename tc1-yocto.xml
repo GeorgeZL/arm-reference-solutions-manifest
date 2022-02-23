@@ -6,16 +6,15 @@
   <remote fetch="https://gitlab.com/" name="gitlab" />
   <remote fetch="https://git.gitlab.arm.com/" name="arm" />
 
-  <project name="arm-reference-solutions/yocto-platform-config" groups="android,bsp" path="bsp/conf" remote="arm" revision="refs/tags/TC1-2021.08.17">
+  <project name="arm-reference-solutions/yocto-platform-config" groups="android,bsp" path="bsp/conf" remote="arm" revision="150c1452a28f2b6bcd53f1651ceeec7e54ab4c86">
     <linkfile dest="bsp/setup-environment" src="setup-environment"/>
   </project>
 
-  <project name="meta-yocto" path="bsp/layers/meta-yocto" groups="android,bsp" remote="yocto" revision="f712b495ce6362d50db3c5c565245535429d6419"/>
-  <project name="bitbake" path="bsp/bitbake" groups="android,bsp" remote="openembedded"  revision="ca88466f6d244042b12b66ccd69e27ca2f057d17"/>
-  <project name="meta-openembedded" path="bsp/layers/meta-openembedded" groups="android,bsp" remote="openembedded" revision="3cf2475ea059184820525bb949c11c3da0e64af8"/>
-  <project name="openembedded/community/meta-kernel" path="bsp/layers/meta-kernel" groups="android,bsp" remote="gitlab" revision="20ad044e009be4858c6f7eecaf65cb5eeb0c5e0b"/>
-  <project name="openembedded-core" path="bsp/layers/openembedded-core" groups="android,bsp" remote="openembedded" revision="0f978b4f03e71267ad0a8a5054141e7727f2944f"/>
-  <project name="meta-arm" path="bsp/layers/meta-arm" groups="android,bsp" remote="yocto" revision="e8c10010687b645138d1ecf7b7b6885b31f14c02"/>
-  <project name="arm-reference-solutions/meta-tc" path="bsp/layers/meta-tc" groups="android,bsp" remote="arm" revision="refs/tags/TC1-2021.08.17"/>
-  <project name="arm-reference-solutions/model-scripts" path="bsp/run-scripts" groups="android,bsp" remote="arm" revision="refs/tags/TC1-2021.08.17"/>
+  <project name="meta-yocto" path="bsp/layers/meta-yocto" groups="android,bsp" remote="yocto" revision="8e578551e14e90da20701bb8a9598e2bb25f74e6"/>
+  <project name="bitbake" path="bsp/bitbake" groups="android,bsp" remote="openembedded"  revision="f0fc0fe94161d4dd4f34df8426222ac590ef6736"/>
+  <project name="meta-openembedded" path="bsp/layers/meta-openembedded" groups="android,bsp" remote="openembedded" revision="cf0ed4239196a76800f8c2facb5a285409b8147a"/>
+  <project name="openembedded-core" path="bsp/layers/openembedded-core" groups="android,bsp" remote="openembedded" revision="9fc8e55892374f1e63b4c995fe1a5539c42d24e0"/>
+  <project name="meta-arm" path="bsp/layers/meta-arm" groups="android,bsp" remote="yocto" revision="185746b66ace598c4c9c7412324e4d2a1fcc9b24"/>
+  <project name="arm-reference-solutions/meta-tc" path="bsp/layers/meta-tc" groups="android,bsp" remote="arm" revision="ed4e9b177866c6405e212c5db4ec4b56ff0d66f1"/>
+  <project name="arm-reference-solutions/model-scripts" path="bsp/run-scripts" groups="android,bsp" remote="arm" revision="a8b05609601ff785756da3133307d4a708718369"/>
 </manifest>
