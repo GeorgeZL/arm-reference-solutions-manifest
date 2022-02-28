@@ -12,8 +12,8 @@
   <superproject name="platform/superproject" remote="aosp" revision="android-12.0.0_r15" />
   <contactinfo bugurl="go/repo-bug" />
 
-  <project path="android/device/arm" name="arm-reference-solutions/device-profile" remote="arm" revision="TC0-2022.02.25" groups="android" />
-  <project path="android/build-scripts" name="arm-reference-solutions/build-scripts" remote="arm" revision="TC0-2022.02.25" groups="android" />
+  <project path="android/device/arm" name="arm-reference-solutions/device-profile" remote="arm" revision="refs/tags/TC0-2022.02.25" groups="android" />
+  <project path="android/build-scripts" name="arm-reference-solutions/build-scripts" remote="arm" revision="refs/tags/TC0-2022.02.25" groups="android" />
 
   <project path="android/build/make" name="platform/build" groups="android,pdk" >
     <copyfile src="core/root.mk" dest="android/Makefile" />
