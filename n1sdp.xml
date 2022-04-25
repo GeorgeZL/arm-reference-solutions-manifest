@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest>
+  <remote fetch="https://github.com/" name="github" />
+  <remote fetch="https://gitlab.arm.com/" name="gitlab" />
+  <remote fetch="https://git.savannah.gnu.org/git" name="gnu"/>
+  <remote fetch="https://github.com/mirror/" name="busybox"/>
+
+  <project path="bsp/deps/mbedtls" name="ARMmbed/mbedtls" groups="ubuntu,bsp,busybox" remote="github" revision="refs/tags/v2.28.0"/>
+  <project path="bsp/scp" name="ARM-software/SCP-firmware" groups="ubuntu,bsp,busybox" sync-s="true" remote="github" revision="de7e464ecd77130147103cf48328099c2d0e6289" upstream="master" />
+  <project path="tools/acpica" name="acpica/acpica" groups="ubuntu,bsp,busybox" remote="github" revision="refs/tags/R07_30_21" />
+  <project path="busybox" name="mirror/busybox" groups="ubuntu,busybox" remote="github" revision="refs/tags/1_34_0" />
+  <project path="grub" name="grub" groups="ubuntu,busybox" remote="gnu" revision="refs/tags/grub-2.06" />
+  <project path="bsp/uefi/edk2" name="tianocore/edk2" groups="ubuntu,bsp,busybox" sync-s="true" remote="github" revision="refs/tags/edk2-stable202202" />
+
+  <project path="bsp/arm-tf" name="arm-reference-solutions/trusted-firmware-a" groups="ubuntu,bsp,busybox" remote="gitlab" revision="n1sdp" />
+  <project path="bsp/uefi/edk2/edk2-platforms" name="arm-reference-solutions/edk2-platforms" groups="ubuntu,bsp,busybox" remote="gitlab" revision="n1sdp" />
+  <project path="bsp/n1sdp-board-firmware" name="arm-reference-solutions/board-firmware" groups="ubuntu,bsp,busybox" remote="gitlab" revision="n1sdp" />
+  <project path="linux" name="arm-reference-solutions/linux" groups="ubuntu,busybox" remote="gitlab" revision="n1sdp" />
+  <project path="build-scripts" name="arm-reference-solutions/build-scripts" groups="ubuntu,bsp,busybox" remote="gitlab" revision="n1sdp" />
+  <project path="docs" name="arm-reference-solutions/arm-reference-solutions-docs" groups="ubuntu,bsp,busybox" remote="gitlab" revision="master" />
+</manifest>
