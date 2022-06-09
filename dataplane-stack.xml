@@ -3,7 +3,7 @@
   <remote fetch="https://git.gitlab.arm.com/" name="arm"/>
   <remote fetch="https://github.com/" name="github"/>
 
-  <project remote="arm" name="arm-reference-solutions/dataplane-stack" path="dataplane-stack" revision="refs/tags/NW-DS-2022.06.30-RC0" />
+  <project remote="arm" name="arm-reference-solutions/dataplane-stack" path="dataplane-stack" revision="refs/tags/NW-DS-2022.06.30" />
   <project remote="github" name="DPDK/dpdk" path="dataplane-stack/components/dpdk" revision="refs/tags/v21.11" />
   <project remote="github" name="FDio/vpp" path="dataplane-stack/components/vpp" revision="refs/tags/v22.02" />
 </manifest>
