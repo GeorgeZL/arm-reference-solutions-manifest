@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <default revision="master"
+           remote="aosp"
+           sync-j="4" />
+
+  <contactinfo bugurl="go/repo-bug" />
+
+  <!-- BEGIN trusty core projects -->
+  <project path="src/trusty/external/lk" name="trusty/lk/common" groups="trusty, android" revision="24d44556bb5939dc007584c7d7b87490f5cff797" >
+	  <copyfile src="makefile" dest="src/trusty/makefile" />
+  </project>
+  <project path="src/trusty/external/headers" name="trusty/external/headers" groups="trusty, android" revision="fe7222b7341192abe23982374f4fc11061255965" />
+  <project path="src/trusty/external/trusty/musl" name="trusty/external/musl" groups="trusty, android" revision="abbff000b920855cebbbed681c19ff7160f36002" />
+  <project path="src/trusty/trusty/user/base" name="trusty/lib" groups="trusty, android" revision="db2aadc4f2f39e960b37f8681a780c22a41efd55" />
+  <project path="src/trusty/trusty/kernel" name="trusty/lk/trusty" groups="trusty, android" revision="c7935db04b08df2da462e92ce224bb001c69fe8a" />
+  <!-- END trusty core projects -->
+
+  <!-- BEGIN apps projects  -->
+  <project path="src/trusty/trusty/user/app/confirmationui" name="trusty/app/confirmationui" groups="trusty, android" revision="ac23680911ba26ea28aa08e1c7ef6053c3d900a7" />
+  <project path="src/trusty/trusty/user/app/sample" name="trusty/app/sample" groups="trusty, android" revision="1d9655a3f11c69050f9aea58fb861527a08cb2fc" />
+  <project path="src/trusty/trusty/user/app/keymaster" name="trusty/app/keymaster" groups="trusty, android" revision="355d3eca9242611954768f040e04c76361b2cdfb" />
+  <project path="src/trusty/trusty/user/app/gatekeeper" name="trusty/app/gatekeeper" groups="trusty, android" revision="d3586e84c998fba6577f203c62b5405e1ea8d96a" />
+  <project path="src/trusty/trusty/user/app/storage" name="trusty/app/storage" groups="trusty, android" revision="8e717675299c6f0e4e2ae6eeeaa70cf3a61e7599" />
+  <project path="src/trusty/trusty/user/app/avb" name="trusty/app/avb" groups="trusty, android" revision="1e716c5d74d663fc76def356fc63f8a2ec764c2a" />
+  <!-- END apps projects -->
+
+  <!-- BEGIN platform projects -->
+  <project path="src/trusty/external/boringssl" name="platform/external/boringssl" groups="trusty, android" revision="1f65662f464ec9b476981a5067dc949612e9adde" />
+  <project path="src/trusty/external/freetype" name="platform/external/freetype" groups="trusty, android" revision="b6fc4c6f3f84bc55b03b5d5b3f19f7eb12460288" />
+  <project path="src/trusty/external/googletest" name="platform/external/googletest" groups="trusty, android" revision="f93adba5c98356dfee63567b65261161c219ad93" />
+  <project path="src/trusty/external/libcppbor" name="platform/external/libcppbor" groups="trusty, android" revision="31258214ed9360e5848889f1b9a68cc5845cc8cb" />
+  <project path="src/trusty/external/libcxx" name="platform/external/libcxx" groups="trusty, android" revision="bdf5fe7af5f9b2f0427e6aa91763f6ab4b7e2791" />
+  <project path="src/trusty/external/libcxxabi" name="platform/external/libcxxabi" groups="trusty, android" revision="ae7de2c7ea5e91282c42505ad17e84ecdc424a7a" />
+  <project path="src/trusty/external/nanopb-c" name="platform/external/nanopb-c" groups="trusty, android" revision="fffa37ba95b345f8e485bd5b847372379af3a65c" />
+  <project path="src/trusty/external/open-dice" name="platform/external/open-dice" groups="trusty, android" revision="87be81258fde167ebcd7ba2749803406b0c3935b" />
+  <project path="src/trusty/external/protobuf" name="platform/external/protobuf" groups="trusty, android" revision="1523bc6d1ad2933d6c6a5ecdc845e24f0cb6f42b" />
+  <project path="src/trusty/external/scudo" name="platform/external/scudo" groups="trusty, android" revision="42ada44cbc291aeb545b06995a3c471dde3faa8e" />
+  <project path="src/trusty/hardware/libhardware" name="platform/hardware/libhardware" groups="trusty, android" revision="ac977b60166c0b7b4dd016b4d15eb35f0c1e14d9" />
+  <project path="src/trusty/system/gatekeeper" name="platform/system/gatekeeper" groups="trusty, android" revision="ef308d0a0bcaa9ccdd772b8649c9ec9326dda758" />
+  <project path="src/trusty/system/iot/attestation" name="platform/system/iot/attestation" groups="trusty, android" revision="1ce107c299a915d4e4022660ec9be65cb65a653c" />
+  <project path="src/trusty/system/keymaster" name="platform/system/keymaster" groups="trusty, android" revision="0661671a0498bddce4987f0dbef72926cc8245c0" />
+  <project path="src/trusty/system/teeui" name="platform/system/teeui" groups="trusty, android" revision="792b154128b773efae04b0395413bf0752a7a2b8" />
+  <project path="src/trusty/tools/repohooks" name="platform/tools/repohooks" groups="trusty, android" revision="0f54b3300ea7902266ae501b604e0d916a6d8f0c" />
+  <!-- END platform projects -->
+
+  <!-- BEGIN device -->
+  <project path="src/trusty/trusty/device/arm/generic-arm64" name="trusty/device/arm/generic-arm64" groups="trusty, android" revision="ab9a1d506198ca92995a3f62cff8792fc298d090" />
+  <!-- END device -->
+
+  <!-- BEGIN trusty vendor projects -->
+  <project path="src/trusty/trusty/vendor/google/aosp" name="trusty/vendor/google/aosp" groups="trusty, android" revision="3ca32537bdd202fe993c69293f0ef35038bb7203" >
+   <!-- Install lk_inc.mk into trusty root -->
+	  <copyfile src="lk_inc.mk" dest="src/trusty/lk_inc.mk" />
+  </project>
+  <!-- END trusty vendor projects -->
+
+  <!-- BEGIN toolchains -->
+
+  <!-- TODO(204914889): Pinning GNU binutils until we move to LLVM -->
+  <project path="src/trusty/prebuilts/build-tools" name="platform/prebuilts/build-tools" groups="trusty, android" clone-depth="1" revision="8ae0677432827b0282bb79de8cf85cc87e6a1444" />
+  <project path="src/trusty/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="trusty, android" clone-depth="1" revision="0a0604336d4d1067aa1aaef8d3779b31fcee841d" />
+  <!-- TODO(185914685): Pinnning clang toolchain until we move off of r399163b -->
+  <project path="src/trusty/prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="trusty, android" clone-depth="1" revision="7cc90b2747a50b6cf86581ecfb674e4bcc292f8d" />
+  <project path="src/trusty/prebuilts/rust" name="platform/prebuilts/rust" groups="trusty, android" clone-depth="1" revision="08803ff99b1ba6aef98c75667020cab1430b325b" />
+  <!-- END toolchains -->
+
+  <!-- BEGIN external rust crates -->
+  <!-- These crates are pinned because their trusty build files live in the trusty tree and need to be manually updated -->
+  <project path="src/trusty/external/rust/crates/cfg-if" name="platform/external/rust/crates/cfg-if" groups="trusty, android" revision="3a0379aa3da7a72be33132486b87df59254d6354" />
+  <project path="src/trusty/external/rust/crates/log" name="platform/external/rust/crates/log" groups="trusty, android" revision="d3a6baa591a726f3216df9e0cf4a8f3bb1a2f5f7" />
+  <!-- END external rust crates -->
+</manifest>
