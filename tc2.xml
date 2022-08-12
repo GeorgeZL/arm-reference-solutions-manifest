@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<manifest>
+   <include name="tc2-bsp.xml" />
+   <include name="tc2-trusty.xml" />
+   <include name="tc2-android.xml" />
+</manifest>

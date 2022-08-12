@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="github" fetch="https://github.com"               sync-j="4" revision="master" />
+  <remote name="tfo"    fetch="https://git.trustedfirmware.org"  sync-j="4" />
+  <remote name="arm"    fetch="https://git.gitlab.arm.com/"      sync-j="4" />
+  <remote name="aosp"   fetch="https://android.googlesource.com" sync-j="4" />
+
+  <project path="build-scripts"          name="arm-reference-solutions/build-scripts" groups="android, bsp, trusty" revision="refs/tags/TC2-2022.08.12"                 remote="arm"/>
+  <project path="run-scripts"            name="arm-reference-solutions/model-scripts" groups="android, bsp, trusty" revision="refs/tags/TC2-2022.08.12"                 remote="arm" />
+  <project path="src/rss"                name="TF-M/trusted-firmware-m.git"           groups="android, bsp, trusty" revision="8ed3af7eb98150ae391394e0ab1258ccf7f17b23" remote="tfo" />
+  <project path="src/rss/tf-m-tests"     name="TF-M/tf-m-tests.git"                   groups="android, bsp, trusty" revision="710c64046b50f092312855bb29d4045d813d8578" remote="tfo" />
+  <project path="src/SCP-firmware"       name="ARM-software/SCP-firmware.git"         groups="android, bsp, trusty" revision="7ee99e48c1c3209b1a8ab98d88f9d1be009894cd" remote="github" />
+  <project path="src/trusted-firmware-a" name="TF-A/trusted-firmware-a.git"           groups="android, bsp, trusty" revision="e95abc4c01822ef43e9e874d63d6596dc0b57279" remote="tfo" />
+  <project path="src/u-boot"             name="u-boot/u-boot.git"                     groups="android, bsp, trusty" revision="refs/tags/v2022.01"                       remote="github" />
+  <project path="src/hafnium"            name="hafnium/hafnium.git"                   groups="android, bsp, trusty" revision="dd0561820946fe23bcd57cc129140437f72102a5" remote="tfo" />
+  <project path="src/linux"              name="kernel/common.git"                     groups="android, bsp, trusty" revision="e8b3f31d7a60648343ecbd45ab58dbcfc425b22c" remote="aosp" />
+  <project path="src/optee_client"       name="OP-TEE/optee_client.git"               groups="android, bsp, trusty" revision="refs/tags/3.18.0"                         remote="github" />
+  <project path="src/optee_os"           name="OP-TEE/optee_os.git"                   groups="android, bsp, trusty" revision="d9d2d0a8dcc8f03b85b60eafb6be126dddb1b7f1" remote="github" />
+  <project path="src/optee_test"         name="OP-TEE/optee_test.git"                 groups="android, bsp, trusty" revision="d09b43bcc61d740c6ab81392edc1da7ae69e5a5f" remote="github" />
+  <project path="src/buildroot"          name="buildroot/buildroot.git"               groups="android, bsp, trusty" revision="730baf05bfebac721bf5002d72787937a4da6378" remote="github" />
+  <project path="src/mbedtls"            name="ARMmbed/mbedtls.git"                   groups="android, bsp, trusty" revision="refs/tags/mbedtls-2.28.0"                 remote="github" />
+  <project path="src/arm-ffa-user"       name="linux-arm/linux-trusted-services.git"  groups="android, bsp, trusty" revision="6a6c6206dd78228333547989dce7283ef62d1353" remote="arm" />
+  <project path="src/trusted-services"   name="TS/trusted-services.git"               groups="android, bsp, trusty" revision="22c47a9355ea4096f85939c45ff69bb45d31e90c" remote="tfo" />
+</manifest>
