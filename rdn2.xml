@@ -15,7 +15,7 @@
   <project remote="arm" name="arm-reference-solutions/buildroot" path="buildroot" revision="refinfra"/>
 
   <project remote="github" name="acpica/acpica" path="tools/acpica" revision="refs/tags/R09_25_20"/>
-  <project remote="github" name="ARMmbed/mbedtls.git" path="mbedtls" revision="refs/tags/mbedtls-2.24.0"/>
+  <project remote="github" name="ARMmbed/mbedtls.git" path="mbedtls" revision="refs/tags/mbedtls-2.28.0"/>
   <project remote="github" name="mirror/busybox" path="busybox" revision="refs/tags/1_33_0"/>
   <project remote="gnugit" name="git/grub" path="grub" revision="refs/tags/grub-2.04"/>
   <project remote="kernel" name="pub/scm/linux/kernel/git/jejb/efitools" path="tools/efitools" revision="refs/tags/v1.9.2"/>
